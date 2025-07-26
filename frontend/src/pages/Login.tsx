@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAppDispatch } from '../redux/hooks';
 import { loginSuccess } from '../redux/reducers/userReducers'; 
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'
+import { API_ENDPOINTS } from '../config/api';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -23,7 +24,7 @@ function Login() {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:8080/api/auth/login', {
+      const response = await fetch(API_ENDPOINTS.AUTH.LOGIN, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -150,7 +151,7 @@ function Login() {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:8080/api/auth/login/verify', {
+      const response = await fetch(API_ENDPOINTS.AUTH.LOGIN_VERIFY, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { API_ENDPOINTS } from '../config/api';
 
 interface ResetPasswordRequest {
   email: string;
@@ -40,7 +41,7 @@ const ResetPassword: React.FC = () => {
   }
 
   const resetPasswordApi = async (data: ResetPasswordRequest): Promise<void> => {
-    const response = await fetch('http://localhost:8080/api/auth/reset-password', {
+    const response = await fetch(API_ENDPOINTS.AUTH.RESET_PASSWORD, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

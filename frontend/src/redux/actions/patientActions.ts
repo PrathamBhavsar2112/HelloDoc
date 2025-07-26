@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { API_ENDPOINTS } from '../../config/api';
 import type {
   PatientProfile,
   PatientDocument
@@ -22,8 +23,6 @@ interface ErrorResponse {
   [key: string]: unknown;
 }
 
-const API_BASE_URL = 'http://localhost:8080/api';
-
 const fetchWithAuth = async <T>(url: string, options: RequestInit = {}, isJson: boolean = true): Promise<{ body: T }> => {
   const token = localStorage.getItem('accessToken');
   
@@ -33,7 +32,7 @@ const fetchWithAuth = async <T>(url: string, options: RequestInit = {}, isJson: 
     ...options.headers,
   };
 
-  const response = await fetch(`${API_BASE_URL}${url}`, {
+  const response = await fetch(url, {
     ...options,
     headers,
   });
@@ -50,7 +49,7 @@ export const fetchPatientProfile = createAsyncThunk(
   'patient/fetchProfile',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetchWithAuth<ProfileResponse>('/patient/profile');
+      const response = await fetchWithAuth<ProfileResponse>(API_ENDPOINTS.PATIENTS.PROFILE);
       return response.body.profile;
     } catch (error: unknown) {
       if (error instanceof Error) {
@@ -65,7 +64,7 @@ export const updatePatientProfile = createAsyncThunk(
   'patient/updateProfile',
   async (profileData: Partial<PatientProfile>, { rejectWithValue }) => {
     try {
-      const response = await fetchWithAuth<PatientProfile>('/patient/profile', {
+      const response = await fetchWithAuth<PatientProfile>(API_ENDPOINTS.PATIENTS.PROFILE, {
         method: 'PUT',
         body: JSON.stringify(profileData),
       });
@@ -89,19 +88,19 @@ export const uploadPatientDocument = createAsyncThunk(
       let endpoint = '';
       switch (docType) {
         case 'healthcard-front':
-          endpoint = '/patient/upload/healthcard/front';
+          endpoint = API_ENDPOINTS.PATIENTS.UPLOAD_HEALTHCARD_FRONT;
           break;
         case 'healthcard-back':
-          endpoint = '/patient/upload/healthcard/back';
+          endpoint = API_ENDPOINTS.PATIENTS.UPLOAD_HEALTHCARD_BACK;
           break;
         case 'insurance':
-          endpoint = '/patient/upload/insurance';
+          endpoint = API_ENDPOINTS.PATIENTS.UPLOAD_INSURANCE;
           break;
         case 'allergy':
-          endpoint = '/patient/upload/allergy';
+          endpoint = API_ENDPOINTS.PATIENTS.UPLOAD_ALLERGY;
           break;
         case 'history':
-          endpoint = '/patient/upload/medical-history';
+          endpoint = API_ENDPOINTS.PATIENTS.UPLOAD_MEDICAL_HISTORY;
           break;
         default:
           throw new Error('Invalid document type');
@@ -126,7 +125,7 @@ export const fetchPatientDocuments = createAsyncThunk(
   'patient/fetchDocuments',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetchWithAuth<PatientDocument[]>('/patient/documents');
+      const response = await fetchWithAuth<PatientDocument[]>(`${API_ENDPOINTS.PATIENTS.BASE}/documents`);
       return response.body;
     } catch (error: unknown) {
       if (error instanceof Error) {

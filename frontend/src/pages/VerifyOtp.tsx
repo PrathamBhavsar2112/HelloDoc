@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { API_ENDPOINTS } from '../config/api';
+
 
 interface VerifyOtpRequest {
   email: string;
@@ -34,7 +36,7 @@ const VerifyOtpPage: React.FC = () => {
   }
 
   const verifyOtpApi = async (data: VerifyOtpRequest): Promise<void> => {
-    const response = await fetch('http://localhost:8080/api/auth/verify-otp', {
+    const response = await fetch(API_ENDPOINTS.AUTH.VERIFY_OTP, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

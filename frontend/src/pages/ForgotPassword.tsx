@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { API_ENDPOINTS } from '../config/api';
 
 interface ForgotPasswordRequest {
   email: string;
@@ -15,7 +16,7 @@ const ForgotPassword: React.FC = () => {
   const navigate = useNavigate();
 
   const forgotPasswordApi = async (data: ForgotPasswordRequest): Promise<void> => {
-    const response = await fetch('http://localhost:8080/api/auth/forgot-password', {
+    const response = await fetch(API_ENDPOINTS.AUTH.FORGOT_PASSWORD, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

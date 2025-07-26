@@ -1,9 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { API_ENDPOINTS } from '../../config/api';
 import type { Appointment, ApiResponse } from '../types/appointmentTypes';
 
 declare type RequestInit = globalThis.RequestInit;
-
-const API_BASE_URL = 'http://localhost:8080/api';
 
 interface ErrorResponse {
   message: string;
@@ -18,7 +17,7 @@ const fetchWithAuth = async <T>(url: string, options: RequestInit = {}): Promise
     Authorization: `Bearer ${token}`,
   };
 
-  const response = await fetch(`${API_BASE_URL}${url}`, {
+  const response = await fetch(url, {
     ...options,
     headers,
   });
@@ -35,7 +34,7 @@ export const bookAppointment = createAsyncThunk(
   'appointment/book',
   async (appointmentData: { doctorId: string; scheduledFor: string; reason: string }, { rejectWithValue }) => {
     try {
-      const { body } = await fetchWithAuth<Appointment>('/appointments/book', {
+      const { body } = await fetchWithAuth<Appointment>(API_ENDPOINTS.APPOINTMENTS.BOOK, {
         method: 'POST',
         body: JSON.stringify(appointmentData),
       });
@@ -53,7 +52,7 @@ export const getAppointments = createAsyncThunk(
   'appointment/getAll',
   async (_, { rejectWithValue }) => {
     try {
-      const { body } = await fetchWithAuth<Appointment[]>('/appointments');
+      const { body } = await fetchWithAuth<Appointment[]>(API_ENDPOINTS.APPOINTMENTS.BASE);
       return body;
     } catch (error: unknown) {
       if (error instanceof Error) {
@@ -68,7 +67,7 @@ export const getAppointmentById = createAsyncThunk(
   'appointment/getById',
   async (appointmentId: string, { rejectWithValue }) => {
     try {
-      const { body } = await fetchWithAuth<Appointment>(`/appointments/${appointmentId}`);
+      const { body } = await fetchWithAuth<Appointment>(API_ENDPOINTS.APPOINTMENTS.BY_ID(appointmentId));
       return body;
     } catch (error: unknown) {
       if (error instanceof Error) {
@@ -83,7 +82,7 @@ export const cancelAppointment = createAsyncThunk(
   'appointment/cancel',
   async (appointmentId: string, { rejectWithValue }) => {
     try {
-      const { body } = await fetchWithAuth<Appointment>(`/appointments/cancel/${appointmentId}`, {
+      const { body } = await fetchWithAuth<Appointment>(API_ENDPOINTS.APPOINTMENTS.CANCEL(appointmentId), {
         method: 'PUT',
       });
       return body;
@@ -104,7 +103,7 @@ export const rescheduleAppointment = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      const { body } = await fetchWithAuth<Appointment>(`/appointments/reschedule/${appointmentId}`, {
+      const { body } = await fetchWithAuth<Appointment>(API_ENDPOINTS.APPOINTMENTS.RESCHEDULE(appointmentId), {
         method: 'PUT',
         body: JSON.stringify({ scheduledFor, reason }),
       });
@@ -122,7 +121,7 @@ export const markAsNoShow = createAsyncThunk(
   'appointment/noShow',
   async (appointmentId: string, { rejectWithValue }) => {
     try {
-      const { body } = await fetchWithAuth<Appointment>(`/appointments/no-show/${appointmentId}`, {
+      const { body } = await fetchWithAuth<Appointment>(API_ENDPOINTS.APPOINTMENTS.NO_SHOW(appointmentId), {
         method: 'PUT',
       });
       return body;
@@ -139,7 +138,7 @@ export const deleteAppointment = createAsyncThunk(
   'appointment/delete',
   async (appointmentId: string, { rejectWithValue }) => {
     try {
-      await fetchWithAuth<void>(`/appointments/${appointmentId}`, {
+      await fetchWithAuth<void>(API_ENDPOINTS.APPOINTMENTS.BY_ID(appointmentId), {
         method: 'DELETE',
       });
       return appointmentId;
