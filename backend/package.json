@@ -16,7 +16,8 @@
   "scripts": {
     "test": "jest",
     "start": "node server.js",
-    "start:dev": "nodemon --legacy-watch server.js"
+    "start:dev": "nodemon --legacy-watch server.js",
+    "create-indexes": "node scripts/createIndexes.js"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
