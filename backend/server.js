@@ -7,7 +7,6 @@ const cookieParser = require('cookie-parser');
 const { connectDB } = require('./config/db');
 const { responseBody } = require('./config/responseBody');
 const messageRoutes = require('./routes/messageRoutes');
-
 require('dotenv').config();
 
 const PORT = process.env.PORT || 8080;
@@ -27,11 +26,7 @@ app.use(helmet({
       objectSrc: ["'none'"],
       scriptSrc: ["'self'"],
       scriptSrcAttr: ["'none'"],
-      styleSrc: [
-        "'self'",
-        "https://fonts.googleapis.com",
-        "https://cdnjs.cloudflare.com"
-      ],
+      styleSrc: ["'self'", "https://fonts.googleapis.com", "https://cdnjs.cloudflare.com"],
       upgradeInsecureRequests: [],
       connectSrc: ["'self'", "https:"],
       mediaSrc: ["'self'"],
@@ -62,19 +57,16 @@ app.use(helmet({
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
-    
     const allowedOrigins = [
       'http://localhost:5173',
       'http://localhost:3000',
       'https://hellodoc-frontend.vercel.app',
-      'https://your-production-domain.com',
+      'https://hello-doc-frontend.vercel.app',
       process.env.FRONTEND_URL
     ].filter(Boolean);
-    
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      console.warn(`CORS blocked origin: ${origin}`);
       callback(new Error('Not allowed by CORS'));
     }
   },
@@ -163,6 +155,7 @@ app.get('/health', (req, res) => {
 if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`Secure HelloDoc server running on port ${PORT}`);
+    console.log(`Security features enabled: CSP, CORS, Rate Limiting, Input Sanitization`);
   });
 }
 
@@ -177,39 +170,27 @@ app.use((err, req, res, next) => {
   });
 
   if (err.code === 'INVALID_FILE_TYPE') {
-    return res.status(400).json(
-      responseBody(400, 'Only JPG, JPEG, PNG, or PDF files are allowed', null)
-    );
+    return res.status(400).json(responseBody(400, 'Only JPG, JPEG, PNG, or PDF files are allowed', null));
   }
 
   if (err.code === 'LIMIT_UNEXPECTED_FILE' || err.code === 'LIMIT_FILE_COUNT') {
-    return res.status(400).json(
-      responseBody(400, 'Only one file can be uploaded at a time', null)
-    );
+    return res.status(400).json(responseBody(400, 'Only one file can be uploaded at a time', null));
   }
 
   if (err.name === 'MulterError') {
-    return res.status(400).json(
-      responseBody(400, 'Upload error occurred', null)
-    );
+    return res.status(400).json(responseBody(400, 'Upload error occurred', null));
   }
 
   if (err.message === 'Not allowed by CORS') {
-    return res.status(403).json(
-      responseBody(403, 'Access denied', null)
-    );
+    return res.status(403).json(responseBody(403, 'Access denied', null));
   }
 
   const isDevelopment = process.env.NODE_ENV === 'development';
-  return res.status(500).json(
-    responseBody(500, 'Internal server error', isDevelopment ? { error: err.message } : null)
-  );
+  return res.status(500).json(responseBody(500, 'Internal server error', isDevelopment ? { error: err.message } : null));
 });
 
-app.use('*', (req, res) => {
-  res.status(404).json(
-    responseBody(404, 'Route not found', null)
-  );
+app.use(/(.*)/, (req, res) => {
+  res.status(404).json(responseBody(404, 'Route not found', null));
 });
 
 module.exports = app;
