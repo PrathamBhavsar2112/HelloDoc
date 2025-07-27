@@ -1,0 +1,81 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1753555871496,137,Home Page,200,OK,Light Load - 10 Users 1-1,text,true,,1031,307,1,1,https://example.org/,136,0,106
+1753555874495,113,Home Page,200,OK,Light Load - 10 Users 1-2,text,true,,1031,307,2,2,https://example.org/,113,0,65
+1753555874432,396,Page Returning 404,404,Not Found,Light Load - 10 Users 1-1,text,true,,1648,311,2,2,https://example.org/test,396,0,0
+1753555876035,126,Load Main Page,200,OK,Light Load - 10 Users 1-1,text,true,,967,325,2,2,https://hello-doc-frontend.vercel.app/,126,0,79
+1753555877388,28,Page Returning 404,404,Not Found,Light Load - 10 Users 1-2,text,true,,1648,311,3,3,https://example.org/test,28,0,0
+1753555877364,85,Load JS Bundle,200,OK,Light Load - 10 Users 1-1,text,true,,236579,349,3,3,https://hello-doc-frontend.vercel.app/assets/index-BjQSzDPK.js,42,0,0
+1753555877496,123,Home Page,200,OK,Light Load - 10 Users 1-3,text,true,,1031,307,3,3,https://example.org/,123,0,70
+1753555878654,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-1,text,false,,863,0,3,3,null,0,0,0
+1753555878620,111,Load Main Page,200,OK,Light Load - 10 Users 1-2,text,true,,967,325,3,3,https://hello-doc-frontend.vercel.app/,111,0,72
+1753555879856,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-1,text,false,,863,0,3,3,null,0,0,0
+1753555879935,102,Load JS Bundle,200,OK,Light Load - 10 Users 1-2,text,true,,236579,349,4,4,https://hello-doc-frontend.vercel.app/assets/index-BjQSzDPK.js,53,0,0
+1753555880388,32,Page Returning 404,404,Not Found,Light Load - 10 Users 1-3,text,true,,1648,311,4,4,https://example.org/test,32,0,0
+1753555880496,93,Home Page,200,OK,Light Load - 10 Users 1-4,text,true,,1031,307,4,4,https://example.org/,93,0,67
+1753555881062,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-1,text,false,,863,0,4,4,null,0,0,0
+1753555881243,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-2,text,false,,863,0,4,4,null,0,0,0
+1753555881626,110,Load Main Page,200,OK,Light Load - 10 Users 1-3,text,true,,967,325,4,4,https://hello-doc-frontend.vercel.app/,110,0,73
+1753555882267,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-1,text,false,,863,0,4,4,null,0,0,0
+1753555882446,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-2,text,false,,863,0,3,3,null,0,0,0
+1753555882938,85,Load JS Bundle,200,OK,Light Load - 10 Users 1-3,text,true,,236579,349,4,4,https://hello-doc-frontend.vercel.app/assets/index-BjQSzDPK.js,41,0,0
+1753555883377,34,Page Returning 404,404,Not Found,Light Load - 10 Users 1-4,text,true,,1648,311,4,4,https://example.org/test,34,0,0
+1753555883493,97,Home Page,200,OK,Light Load - 10 Users 1-5,text,true,,1031,307,4,4,https://example.org/,96,0,65
+1753555883652,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-2,text,false,,863,0,4,4,null,0,0,0
+1753555884229,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-3,text,false,,863,0,4,4,null,0,0,0
+1753555884620,107,Load Main Page,200,OK,Light Load - 10 Users 1-4,text,true,,967,325,4,4,https://hello-doc-frontend.vercel.app/,107,0,70
+1753555884854,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-2,text,false,,863,0,4,4,null,0,0,0
+1753555885431,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-3,text,false,,863,0,3,3,null,0,0,0
+1753555885933,105,Load JS Bundle,200,OK,Light Load - 10 Users 1-4,text,true,,236579,349,4,4,https://hello-doc-frontend.vercel.app/assets/index-BjQSzDPK.js,62,0,0
+1753555886391,29,Page Returning 404,404,Not Found,Light Load - 10 Users 1-5,text,true,,1648,311,4,4,https://example.org/test,29,0,0
+1753555886495,104,Home Page,200,OK,Light Load - 10 Users 1-6,text,true,,1031,307,4,4,https://example.org/,104,0,72
+1753555886638,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-3,text,false,,863,0,4,4,null,0,0,0
+1753555887245,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-4,text,false,,863,0,4,4,null,0,0,0
+1753555887628,135,Load Main Page,200,OK,Light Load - 10 Users 1-5,text,true,,967,325,4,4,https://hello-doc-frontend.vercel.app/,135,0,77
+1753555887842,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-3,text,false,,863,0,4,4,null,0,0,0
+1753555888451,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-4,text,false,,863,0,3,3,null,0,0,0
+1753555888969,114,Load JS Bundle,200,OK,Light Load - 10 Users 1-5,text,true,,236579,349,4,4,https://hello-doc-frontend.vercel.app/assets/index-BjQSzDPK.js,44,0,0
+1753555889378,28,Page Returning 404,404,Not Found,Light Load - 10 Users 1-6,text,true,,1648,311,4,4,https://example.org/test,28,0,0
+1753555889491,118,Home Page,200,OK,Light Load - 10 Users 1-7,text,true,,1031,307,4,4,https://example.org/,118,0,92
+1753555889654,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-4,text,false,,863,0,4,4,null,0,0,0
+1753555890286,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-5,text,false,,863,0,4,4,null,0,0,0
+1753555890613,117,Load Main Page,200,OK,Light Load - 10 Users 1-6,text,true,,967,325,4,4,https://hello-doc-frontend.vercel.app/,117,0,73
+1753555890857,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-4,text,false,,863,0,4,4,null,0,0,0
+1753555891492,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-5,text,false,,863,0,3,3,null,0,0,0
+1753555891932,98,Load JS Bundle,200,OK,Light Load - 10 Users 1-6,text,true,,236579,349,4,4,https://hello-doc-frontend.vercel.app/assets/index-BjQSzDPK.js,45,0,0
+1753555892329,26,Page Returning 404,404,Not Found,Light Load - 10 Users 1-7,text,true,,1648,311,4,4,https://example.org/test,26,0,0
+1753555892492,94,Home Page,200,OK,Light Load - 10 Users 1-8,text,true,,1031,307,4,4,https://example.org/,94,0,66
+1753555892697,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-5,text,false,,863,0,4,4,null,0,0,0
+1753555893235,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-6,text,false,,863,0,4,4,null,0,0,0
+1753555893558,112,Load Main Page,200,OK,Light Load - 10 Users 1-7,text,true,,967,325,4,4,https://hello-doc-frontend.vercel.app/,112,0,75
+1753555893901,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-5,text,false,,863,0,4,4,null,0,0,0
+1753555894438,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-6,text,false,,863,0,3,3,null,0,0,0
+1753555894876,122,Load JS Bundle,200,OK,Light Load - 10 Users 1-7,text,true,,236571,349,4,4,https://hello-doc-frontend.vercel.app/assets/index-BjQSzDPK.js,42,0,0
+1753555895308,67,Page Returning 404,404,Not Found,Light Load - 10 Users 1-8,text,true,,1648,311,4,4,https://example.org/test,67,0,0
+1753555895505,92,Home Page,200,OK,Light Load - 10 Users 1-9,text,true,,1031,307,4,4,https://example.org/,92,0,66
+1753555895643,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-6,text,false,,863,0,4,4,null,0,0,0
+1753555896200,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-7,text,false,,863,0,4,4,null,0,0,0
+1753555896581,111,Load Main Page,200,OK,Light Load - 10 Users 1-8,text,true,,967,325,4,4,https://hello-doc-frontend.vercel.app/,111,0,74
+1753555896848,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-6,text,false,,863,0,4,4,null,0,0,0
+1753555897407,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-7,text,false,,863,0,3,3,null,0,0,0
+1753555897898,87,Load JS Bundle,200,OK,Light Load - 10 Users 1-8,text,true,,236579,349,4,4,https://hello-doc-frontend.vercel.app/assets/index-BjQSzDPK.js,43,0,0
+1753555898353,27,Page Returning 404,404,Not Found,Light Load - 10 Users 1-9,text,true,,1648,311,4,4,https://example.org/test,27,0,0
+1753555898495,91,Home Page,200,OK,Light Load - 10 Users 1-10,text,true,,1031,307,4,4,https://example.org/,91,0,60
+1753555898613,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-7,text,false,,863,0,4,4,null,0,0,0
+1753555899191,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-8,text,false,,863,0,4,4,null,0,0,0
+1753555899588,106,Load Main Page,200,OK,Light Load - 10 Users 1-9,text,true,,967,325,4,4,https://hello-doc-frontend.vercel.app/,106,0,69
+1753555899819,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-7,text,false,,863,0,4,4,null,0,0,0
+1753555900396,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-8,text,false,,863,0,3,3,null,0,0,0
+1753555900899,111,Load JS Bundle,200,OK,Light Load - 10 Users 1-9,text,true,,236579,349,3,3,https://hello-doc-frontend.vercel.app/assets/index-BjQSzDPK.js,69,0,0
+1753555901310,31,Page Returning 404,404,Not Found,Light Load - 10 Users 1-10,text,true,,1648,311,3,3,https://example.org/test,31,0,0
+1753555901601,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-8,text,false,,863,0,3,3,null,0,0,0
+1753555902213,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-9,text,false,,863,0,3,3,null,0,0,0
+1753555902548,122,Load Main Page,200,OK,Light Load - 10 Users 1-10,text,true,,967,325,3,3,https://hello-doc-frontend.vercel.app/,122,0,68
+1753555902808,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-8,text,false,,863,0,3,3,null,0,0,0
+1753555903418,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-9,text,false,,863,0,2,2,null,0,0,0
+1753555903873,144,Load JS Bundle,200,OK,Light Load - 10 Users 1-10,text,true,,236579,349,2,2,https://hello-doc-frontend.vercel.app/assets/index-BjQSzDPK.js,44,0,0
+1753555904624,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-9,text,false,,863,0,2,2,null,0,0,0
+1753555905223,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-10,text,false,,863,0,2,2,null,0,0,0
+1753555905828,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-9,text,false,,863,0,2,2,null,0,0,0
+1753555906429,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-10,text,false,,863,0,1,1,null,0,0,0
+1753555907635,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-10,text,false,,863,0,1,1,null,0,0,0
+1753555908839,0,,Non HTTP response code: java.net.MalformedURLException,Non HTTP response message: Illegal character found in host: ' ',Light Load - 10 Users 1-10,text,false,,863,0,1,1,null,0,0,0

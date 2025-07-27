@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { API_ENDPOINTS } from '../config/api';
+import { BASE_URL } from '../constant_url';
 
 function DoctorRegister() {
   const navigate = useNavigate();
@@ -78,7 +78,7 @@ function DoctorRegister() {
     }
 
     try {
-      const response = await fetch(API_ENDPOINTS.AUTH.REGISTER, {
+      const response = await fetch(`${BASE_URL}/api/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

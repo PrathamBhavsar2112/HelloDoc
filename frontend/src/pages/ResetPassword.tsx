@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+<<<<<<< HEAD
 import { API_ENDPOINTS } from '../config/api';
+=======
+import { BASE_URL } from '../constant_url';
+>>>>>>> upstream/develop
 
 interface ResetPasswordRequest {
   email: string;
@@ -41,7 +45,11 @@ const ResetPassword: React.FC = () => {
   }
 
   const resetPasswordApi = async (data: ResetPasswordRequest): Promise<void> => {
+<<<<<<< HEAD
     const response = await fetch(API_ENDPOINTS.AUTH.RESET_PASSWORD, {
+=======
+    const response = await fetch(`${BASE_URL}/api/auth/reset-password`, {
+>>>>>>> upstream/develop
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -4,7 +4,8 @@ import { forgotPasswordReducer } from './reducers/authReducers';
 import userReducer from './reducers/userReducers';
 import appointmentReducer from './reducers/appointmentReducer';
 import patientReducer from './reducers/patientReducer';
-import doctorReducer from './reducers/doctorReducer'; 
+import doctorReducer from './reducers/doctorReducer';
+//import adminReducer from './reducers/adminReducer'; 
 
 export const store = configureStore({
   reducer: {
@@ -13,7 +14,8 @@ export const store = configureStore({
     user: userReducer,
     appointment: appointmentReducer,
     patient: patientReducer,
-    doctor: doctorReducer 
+    doctor: doctorReducer, 
+    //admin: adminReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -23,7 +25,8 @@ export const store = configureStore({
           'auth.refreshToken', 
           'auth.accessToken',
           'forgotPassword',
-          'doctor' 
+          'doctor',
+          'admin'
         ],
       },
     }),

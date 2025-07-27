@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+<<<<<<< HEAD
 import { API_ENDPOINTS } from '../config/api';
+=======
+import { BASE_URL } from '../constant_url';
+>>>>>>> upstream/develop
 
 interface ForgotPasswordRequest {
   email: string;
@@ -16,7 +20,11 @@ const ForgotPassword: React.FC = () => {
   const navigate = useNavigate();
 
   const forgotPasswordApi = async (data: ForgotPasswordRequest): Promise<void> => {
+<<<<<<< HEAD
     const response = await fetch(API_ENDPOINTS.AUTH.FORGOT_PASSWORD, {
+=======
+    const response = await fetch(`${BASE_URL}/api/auth/forgot-password`, {
+>>>>>>> upstream/develop
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
