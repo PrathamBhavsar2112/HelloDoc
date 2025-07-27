@@ -17,7 +17,6 @@ import VerifyEmail from './pages/VerifyEmail'
 import PatientCalendar from './pages/PatientCalendar'
 import DoctorCalendar from './pages/DoctorCalendar'
 import BookAppointment from './pages/AppointmentBooking'
-//import AdminDashboard from './pages/AdminDashboard'
 
 import ChatPage from './pages/ChatPage'
 
@@ -43,10 +42,7 @@ function App() {
         <Route path="/verify-otp" element={<VerifyOtpPage />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
-        {/* In your main router file (App.tsx or Routes.tsx) */}
         <Route path="/patient/book-appointment" element={<BookAppointment />} />
-        {/*<Route path="/patient/appointments" element={<AppointmentsList />} />*/}
-        {/*<Route path="/admin-dashboard" element={<AdminDashboard />} />*/}
 
         <Route path="/chat" element={<ChatPage />} /> 
 

@@ -18,11 +18,7 @@ const fetchWithAuth = async <T>(url: string, options: RequestInit = {}): Promise
     Authorization: `Bearer ${token}`,
   };
 
-<<<<<<< HEAD
-  const response = await fetch(url, {
-=======
   const response = await fetch(`${BASE_URL}${url}`, {
->>>>>>> upstream/develop
     ...options,
     headers,
   });

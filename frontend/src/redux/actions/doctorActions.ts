@@ -144,11 +144,7 @@ export const uploadProfilePicture = createAsyncThunk(
       formData.append('image', file);
       
       const token = localStorage.getItem('accessToken');
-<<<<<<< HEAD
-      const response = await axios.post<DirectApiResponse>(API_ENDPOINTS.DOCTORS.PROFILE_PICTURE, formData, {
-=======
       const response = await axios.post<DirectApiResponse>(`${BASE_URL}/doctors/profile-picture`, formData, {
->>>>>>> upstream/develop
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -199,11 +195,7 @@ export const submitDoctorCredential = createAsyncThunk(
       formData.append('file', file);
       
       const token = localStorage.getItem('accessToken');
-<<<<<<< HEAD
-      const response = await axios.post<DirectApiResponse>(API_ENDPOINTS.DOCTORS.CREDENTIALS(doctorId), formData, {
-=======
       const response = await axios.post<DirectApiResponse>(`${BASE_URL}/doctors/${doctorId}/credentials`, formData, {
->>>>>>> upstream/develop
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
