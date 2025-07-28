@@ -1,9 +1,8 @@
-// server.js
+
 
 const client = require('prom-client');
-// collect default metrics (CPU, memory, event loop lag, heap, etc.)
+
 client.collectDefaultMetrics();
-// create a histogram for HTTP request durations
 const httpRequestDuration = new client.Histogram({
   name: 'http_request_duration_seconds',
   help: 'Duration of HTTP requests in seconds',
@@ -27,7 +26,6 @@ const app = express();
 
 connectDB();
 
-// Security headers via helmet
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
@@ -67,8 +65,6 @@ app.use(helmet({
   referrerPolicy:  { policy: "no-referrer" },
   xssFilter:       true,
 }));
-
-// CORS
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
@@ -89,7 +85,7 @@ app.use(cors({
   optionsSuccessStatus: 200
 }));
 
-// HTTP request timing
+
 app.use((req, res, next) => {
   const end = httpRequestDuration.startTimer();
   res.on('finish', () => {
@@ -102,12 +98,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// Body parsing & cookies
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: false, limit: '10mb' }));
 app.use(cookieParser());
 
-// Sanitize query overwrite
+
 app.use((req, res, next) => {
   const desc = Object.getOwnPropertyDescriptor(req, 'query') || {};
   Object.defineProperty(req, 'query', {
@@ -118,7 +113,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Mongo sanitize
+
 app.use(mongoSanitize({
   replaceWith: '_',
   onSanitize: ({ req, key }) => {
@@ -140,13 +135,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// Simple request logging
 app.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.path} - IP: ${req.ip}`);
   next();
 });
 
-// Routes
 const authRoutes       = require('./routes/authRoutes');
 const appointmentRoutes= require('./routes/appointmentRoutes');
 const doctorRoutes     = require('./routes/doctorRoutes');
@@ -158,7 +151,6 @@ app.use('/api/doctors',     doctorRoutes);
 app.use('/api/patient',     patientRoutes);
 app.use('/api/messages',    messageRoutes);
 
-// Health & root
 app.get('/', (req, res) => {
   res.json({
     message: 'HelloDoc Backend API - Secured',
@@ -180,7 +172,6 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Metrics endpoint (moved before catch-all)
 app.get('/metrics', async (req, res) => {
   try {
     res.set('Content-Type', client.register.contentType);
@@ -190,7 +181,6 @@ app.get('/metrics', async (req, res) => {
   }
 });
 
-// Global error handler
 app.use((err, req, res, next) => {
   console.error('Error Details:', {
     message: err.message,
@@ -220,12 +210,10 @@ app.use((err, req, res, next) => {
   );
 });
 
-// Catch-all 404
 app.use(/.*/, (req, res) => {
   res.status(404).json(responseBody(404, 'Route not found', null));
 });
 
-// Start server
 if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`Secure HelloDoc server running on port ${PORT}`);
