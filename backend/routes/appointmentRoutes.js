@@ -1,4 +1,4 @@
-const {Router} = require('express');
+const { Router } = require('express');
 const { verifyToken } = require('../middleware/authmiddleware/Jwt');
 const { authorizeRoles } = require('../middleware/rolemiddleware/role');
 const {
@@ -13,35 +13,124 @@ const {
 
 const router = Router();
 
+// Apply authentication middleware to all routes
 router.use(verifyToken);
 
+// Appointment booking - Only patients can book
 router.post(
-    '/book',
-    authorizeRoles('patient'),
-    bookAppointment);
+  '/book',
+  authorizeRoles('patient'),
+  bookAppointment
+);
+
+// Get all appointments - Accessible by patients, doctors, and admins
 router.get(
-    '/',
-    authorizeRoles('patient', 'doctor', 'admin'), 
-    getAppointments);
+  '/',
+  authorizeRoles('patient', 'doctor', 'admin'),
+  getAppointments
+);
+
+// Get specific appointment by ID - Accessible by patients, doctors, and admins
 router.get(
-    '/:appointmentId', 
-    authorizeRoles('patient', 'doctor', 'admin'),
-    getAppointmentById);
+  '/:appointmentId',
+  authorizeRoles('patient', 'doctor', 'admin'),
+  getAppointmentById
+);
+
+// Cancel appointment - Accessible by patients, doctors, and admins
 router.put(
-    '/cancel/:appointmentId',
-    authorizeRoles('patient', 'doctor', 'admin'),
-    cancelAppointment);
+  '/cancel/:appointmentId',
+  authorizeRoles('patient', 'doctor', 'admin'),
+  cancelAppointment
+);
+
+// Reschedule appointment - Accessible by patients, doctors, and admins
 router.put(
-    '/reschedule/:appointmentId',
-    authorizeRoles('patient', 'doctor', 'admin'),
-    rescheduleAppointment);
+  '/reschedule/:appointmentId',
+  authorizeRoles('patient', 'doctor', 'admin'),
+  rescheduleAppointment
+);
+
+// Mark appointment as no-show - Only doctors and admins
 router.put(
-    '/no-show/:appointmentId', 
-    authorizeRoles('doctor', 'admin'),
-    noShowAppointment);
+  '/no-show/:appointmentId',
+  authorizeRoles('doctor', 'admin'),
+  noShowAppointment
+);
+
+// Delete appointment - Only admins
 router.delete(
-    '/:appointmentId',
-    authorizeRoles('admin'),
-    deleteAppointment);
+  '/:appointmentId',
+  authorizeRoles('admin'),
+  deleteAppointment
+);
+
+// Health check endpoint for appointments service
+router.get(
+  '/health',
+  (req, res) => {
+    res.status(200).json({
+      status: 'healthy',
+      service: 'appointments',
+      timestamp: new Date().toISOString()
+    });
+  }
+);
+
+// Cache statistics endpoint (for monitoring) - Only admins
+router.get(
+  '/admin/cache-stats',
+  authorizeRoles('admin'),
+  (req, res) => {
+    try {
+      const cacheService = require('../services/cacheService');
+      const stats = cacheService.getMemoryInfo();
+      res.status(200).json({
+        status: 'success',
+        data: stats,
+        timestamp: new Date().toISOString()
+      });
+    } catch (error) {
+      console.error('Error fetching cache stats:', error);
+      res.status(500).json({
+        status: 'error',
+        message: 'Unable to fetch cache statistics'
+      });
+    }
+  }
+);
+
+// Clear cache endpoint (for maintenance) - Only admins
+router.post(
+  '/admin/clear-cache',
+  authorizeRoles('admin'),
+  (req, res) => {
+    try {
+      const cacheService = require('../services/cacheService');
+      const { pattern } = req.body;
+      
+      if (pattern) {
+        const deleted = cacheService.clearPattern(pattern);
+        res.status(200).json({
+          status: 'success',
+          message: `Cleared cache entries matching pattern: ${pattern}`,
+          deletedCount: deleted
+        });
+      } else {
+        cacheService.flushAll();
+        res.status(200).json({
+          status: 'success',
+          message: 'All cache entries cleared'
+        });
+      }
+    } catch (error) {
+      console.error('Error clearing cache:', error);
+      res.status(500).json({
+        status: 'error',
+        message: 'Unable to clear cache'
+      });
+    }
+  }
+);
 
 module.exports = router;
