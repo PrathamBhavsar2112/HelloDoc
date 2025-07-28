@@ -5,11 +5,9 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
-      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Light Load - 10 Users&quot;">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Light Load - 10 Users&quot;" enabled="false">
         <intProp name="ThreadGroup.num_threads">10</intProp>
         <intProp name="ThreadGroup.ramp_time">30</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -275,7 +273,7 @@
               </elementProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg1OGIyNDMxZmJkMzYyYjZiZTNiMzAiLCJlbWFpbCI6ImJoYXZzYXJwcmF0aGFtMjExMkBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiaWF0IjoxNzUzNjU5NzUwLCJleHAiOjE3NTM2NjMzNTB9.Cl9pVEvKLsqe26saCYtarmLoqa0Ui3po3rfd3Siwi_4</stringProp>
+                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg1OGIyNDMxZmJkMzYyYjZiZTNiMzAiLCJlbWFpbCI6ImJoYXZzYXJwcmF0aGFtMjExMkBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiaWF0IjoxNzUzNjYxMTQwLCJleHAiOjE3NTM2NjQ3NDB9.JUjh_OQyPxLHvGhLMpj1grHAk6Y86ZeF7rfkHFGLfno</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -301,7 +299,7 @@
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg1OGIyNDMxZmJkMzYyYjZiZTNiMzAiLCJlbWFpbCI6ImJoYXZzYXJwcmF0aGFtMjExMkBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiaWF0IjoxNzUzNjU5NzUwLCJleHAiOjE3NTM2NjMzNTB9.Cl9pVEvKLsqe26saCYtarmLoqa0Ui3po3rfd3Siwi_4</stringProp>
+                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg1OGIyNDMxZmJkMzYyYjZiZTNiMzAiLCJlbWFpbCI6ImJoYXZzYXJwcmF0aGFtMjExMkBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiaWF0IjoxNzUzNjYxMTQwLCJleHAiOjE3NTM2NjQ3NDB9.JUjh_OQyPxLHvGhLMpj1grHAk6Y86ZeF7rfkHFGLfno</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -312,7 +310,7 @@
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Moderate Load - 50 Users" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Moderate Load - 50 Users">
         <intProp name="ThreadGroup.num_threads">50</intProp>
         <intProp name="ThreadGroup.ramp_time">60</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -429,7 +427,7 @@
               </elementProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg1OGIyNDMxZmJkMzYyYjZiZTNiMzAiLCJlbWFpbCI6ImJoYXZzYXJwcmF0aGFtMjExMkBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiaWF0IjoxNzUzNjU5NzUwLCJleHAiOjE3NTM2NjMzNTB9.Cl9pVEvKLsqe26saCYtarmLoqa0Ui3po3rfd3Siwi_4</stringProp>
+                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg1OGIyNDMxZmJkMzYyYjZiZTNiMzAiLCJlbWFpbCI6ImJoYXZzYXJwcmF0aGFtMjExMkBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiaWF0IjoxNzUzNjYxMTQwLCJleHAiOjE3NTM2NjQ3NDB9.JUjh_OQyPxLHvGhLMpj1grHAk6Y86ZeF7rfkHFGLfno</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -455,7 +453,7 @@
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg1OGIyNDMxZmJkMzYyYjZiZTNiMzAiLCJlbWFpbCI6ImJoYXZzYXJwcmF0aGFtMjExMkBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiaWF0IjoxNzUzNjU5NzUwLCJleHAiOjE3NTM2NjMzNTB9.Cl9pVEvKLsqe26saCYtarmLoqa0Ui3po3rfd3Siwi_4</stringProp>
+                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg1OGIyNDMxZmJkMzYyYjZiZTNiMzAiLCJlbWFpbCI6ImJoYXZzYXJwcmF0aGFtMjExMkBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiaWF0IjoxNzUzNjYxMTQwLCJleHAiOjE3NTM2NjQ3NDB9.JUjh_OQyPxLHvGhLMpj1grHAk6Y86ZeF7rfkHFGLfno</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
