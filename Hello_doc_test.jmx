@@ -611,6 +611,10 @@
           <stringProp name="filename">/Users/prathambhavsar/Pratham/Dalhousie/Advance_Web/Assignemnt/A_3/baseline_moderate_load(after).csv</stringProp>
         </ResultCollector>
         <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+          <stringProp name="ConstantTimer.delay">300</stringProp>
+        </ConstantTimer>
+        <hashTree/>
       </hashTree>
     </hashTree>
   </hashTree>
