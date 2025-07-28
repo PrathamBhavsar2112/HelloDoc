@@ -1,3 +1,14 @@
+const client = require('prom-client');
+// collect default metrics (CPU, memory, event loop lag, heap, etc.)
+client.collectDefaultMetrics();
+// create a histogram for HTTP request durations
+const httpRequestDuration = new client.Histogram({
+  name: 'http_request_duration_seconds',
+  help: 'Duration of HTTP requests in seconds',
+  labelNames: ['method','route','status_code'],
+  buckets: [0.005,0.01,0.025,0.05,0.1,0.3,0.5,1,2,5]  // fine-tune as needed
+});
+
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -76,6 +87,16 @@ app.use(cors({
   exposedHeaders: ['Content-Range', 'X-Content-Range'],
   optionsSuccessStatus: 200
 }));
+
+app.use((req, res, next) => {
+  const end = httpRequestDuration.startTimer();
+  // when response finishes, record the duration
+  res.on('finish', () => {
+    end({ method: req.method, route: req.route ? req.route.path : req.path, status_code: res.statusCode });
+  });
+  next();
+});
+
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: false, limit: '10mb' }));
@@ -192,8 +213,17 @@ app.use((err, req, res, next) => {
 app.use(/(.*)/, (req, res) => {
   res.status(404).json(responseBody(404, 'Route not found', null));
 });
+app.get('/metrics', async (req, res) => {
+  try {
+    res.set('Content-Type', client.register.contentType);
+    res.end(await client.register.metrics());
+  } catch (ex) {
+    res.status(500).end(ex);
+  }
+});
+
+
 
 module.exports = app;
-
 
 

@@ -134,3 +134,39 @@ router.post(
 );
 
 module.exports = router;
+
+
+
+// Caching service implementation
+const NodeCache = require('node-cache');
+
+class CacheService {
+  constructor() {
+    this.shortTermCache = new NodeCache({ stdTTL: 300 }); // 5 minutes
+    this.mediumTermCache = new NodeCache({ stdTTL: 900 }); // 15 minutes
+    this.longTermCache = new NodeCache({ stdTTL: 3600 }); // 1 hour
+  }
+
+  // Get appointments with caching
+  async getAppointments(userId, userRole) {
+    const cacheKey = `appointments_${userId}_${userRole}`;
+    let appointments = this.mediumTermCache.get(cacheKey);
+    
+    if (!appointments) {
+      appointments = await this.fetchAppointmentsFromDB(userId, userRole);
+      this.mediumTermCache.set(cacheKey, appointments);
+    }
+    
+    return appointments;
+  }
+
+  // Invalidate cache on data updates
+  invalidateAppointmentCache(userId) {
+    const keys = this.mediumTermCache.keys();
+    keys.forEach(key => {
+      if (key.includes(`appointments_${userId}`)) {
+        this.mediumTermCache.del(key);
+      }
+    });
+  }
+}
